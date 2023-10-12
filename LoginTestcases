@@ -1,0 +1,30 @@
+package testcases;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+import pageObjects.LoginPageObjects;
+
+public class LoginTestcase {
+	
+	@Test
+	public void login() throws InterruptedException{
+		System.setProperty("webdriver.gecko.driver","./chrome/geckodriver.exe");
+		
+		FirefoxDriver driver = new FirefoxDriver();
+		
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		Thread.sleep(3000);
+		
+		PageFactory.initElements(driver,LoginPageObjects.class);
+		
+		LoginPageObjects.username.sendKeys("Admin1");
+		LoginPageObjects.password.sendKeys("admin");
+		LoginPageObjects.Login.click();
+		
+		
+	} 
+
+}
